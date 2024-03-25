@@ -79,7 +79,7 @@ class HBNBCommand(cmd.Cmd):
 
         return True
 
-    def do_EOE(self, line):
+    def do_EOF(self, line):
         """handle file character end"""
 
         return True
