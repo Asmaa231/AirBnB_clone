@@ -64,13 +64,13 @@ class HBNBCommand(cmd.Cmd):
                         print(instance_dict)
                 else:
                     print("** class doesn't exist **")
-    
+
     def do_destory(self, line):
         """ Usage: 1. show <class name> | 2. <class name>.(id)
             Function: show class instance details
         """
         if line == "" or line is None:
-             print("** class name missing **")
+            print("** class name missing **")
 
         else:
             class_info = line.split(" ")
@@ -80,17 +80,16 @@ class HBNBCommand(cmd.Cmd):
                 class_name = class_info[0]
                 instance_id = class_info[1]
                 if class_name in storage.classes():
-                     key = f"{class_name}.{instance_id}"
-                     if key not in storage.all():
-                         print("** no instance found **")
-                     else:
-                         del storage.all()[key]
-                         storage.save()
-                         return
+                    key = f"{class_name}.{instance_id}"
+                    if key not in storage.all():
+                        print("** no instance found **")
+                    else:
+                        del storage.all()[key]
+                        storage.save()
+                        return
                 else:
                     print("** class doesn't exist **")
 
-    
     def do_all(self, line):
         """ Usage: 1. all | 2. <class name> | 3. <class name>.all()
             Function: print string presesntation of all  instance
@@ -127,7 +126,7 @@ class HBNBCommand(cmd.Cmd):
 
             if class_name is None:
                 print("** class name missing **")
-            elif insprint("** class doesn't exist **")
+            elif instance_id is None:
                 print("** instance id missing **")
             elif update_dict is None:
                 print("** attribute name missing **")
@@ -196,15 +195,15 @@ class HBNBCommand(cmd.Cmd):
                     line = f"{command} {class_name} {instance_id}"
                 else:
                     attribute_part = args_checks.group(2)
-                    line = f"{command} {class_name} {instance_id} \ 
+                    line = f"{command} {class_name} {instance_id} \
                              {attribute_part}"
                 return ''
 
         return cmd.Cmd.precmd(self, line)
 
-    def do_count(self, line):       
+    def do_count(self, line):
         """usage: 1. count <class name> | 2. <class name>.count()
-        Function: count all the instance of the class
+           Function: count all the instance of the class
         """
         count = 0
 
