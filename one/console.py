@@ -25,23 +25,22 @@ class HBNBCommand(cmd.Cmd):
         """ Usage: quit
             Function: exit the program
         """
-         # quit()
-         return True
+        # quit()
+        return True
 
-     def do_create(self, line):
-         """ Usage: 1. create <class name> | 2. <class name>.create()
-             Function: create class instance
-         """
-         if line != "" or line is not None:
-             if line not in storage.classes():
-                 print("** class doesn't exist **")
-             else:
-                 
-                 obj_intance = storage.classes()[line]()
-                 obj_intance.save()
-                 print(obj_intance.id)
-         else:
-             print("** class name missing **")
+    def do_create(self, line):
+        """ Usage: 1. create <class name> | 2. <class name>.create()
+            Function: create class instance
+        """
+        if line != "" or line is not None:
+            if line not in storage.classes():
+                print("** class doesn't exist **")
+            else:
+                obj_intance = storage.classes()[line]()
+                obj_intance.save()
+                print(obj_intance.id)
+        else:
+            print("** class name missing **")
 
     def do_show(self, line):
         """ Usage: 1. show <class name> | 2. <class name>.(id)
@@ -56,19 +55,17 @@ class HBNBCommand(cmd.Cmd):
             else:
                 class_name = class_info[0]
                 instance_id = class_info[1]
-                if class_name in storage,classes():
+                if class_name in storage.classes():
                     key = f"{class_name}.{instance_id}"
                     if key not in storage.all():
                         print("** no instance found **")
                     else:
                         instance_dict = storage.all()[key]
                         print(instance_dict)
-
                 else:
                     print("** class doesn't exist **")
- 
     
-    def do_destory(self, line)
+    def do_destory(self, line):
         """ Usage: 1. show <class name> | 2. <class name>.(id)
             Function: show class instance details
         """
